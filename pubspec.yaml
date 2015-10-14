@@ -1,0 +1,4 @@
+name: inn-valid-gen
+version: 0.0.1
+dependencies:
+  args:
