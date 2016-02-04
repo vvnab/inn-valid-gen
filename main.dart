@@ -1,3 +1,5 @@
+library inn_valid_gen;
+
 import 'package:args/args.dart';
 import 'dart:math' as math;
 
@@ -34,6 +36,7 @@ int _n12(inn) {
 }
 
 List<dynamic> validate(String inn) {
+	// Возвращает [bool flag, String details]
 	if (inn.length == 10) {
 		var result = inn[9] == '${_n10(inn)}';
 		return [result, result ? 'ok' : 'last number: ${_n10(inn)}'];
@@ -49,12 +52,12 @@ String generate(String type) {
 	var random = new math.Random();
 	var rawString = random.nextDouble().toString().substring(2);
 	if (type == '10') {
-		// номер для физ.лица
+		// номер для юр.лица
 		var inn = rawString.substring(0, 9);
 		inn += _n10(inn).toString();
 		return inn;
 	} else {
-		// номер для юр.лица
+		// номер для физ.лица
 		var inn = rawString.substring(0, 10);
 		inn += _n11(inn).toString();
 		inn += _n12(inn).toString();
